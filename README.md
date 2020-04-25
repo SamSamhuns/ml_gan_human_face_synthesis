@@ -1,6 +1,6 @@
 # Generative Adversarial Networks: Face Synthesis
 
-Implementation of a GAN for face systhesis using a celebrity dataset.
+Implementation of a GAN for face synthesis using a celebrity image dataset.
 
 ## Setup
 
