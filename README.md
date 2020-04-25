@@ -9,10 +9,10 @@ $ python -m venv venv
 $ pip install -r requirements.txt
 ```
 
-To start a new Jupyter Notebook kernel:
+To start a new Jupyter Notebook kernel based on the current virtualenv:
 
 ```shell
-$ ipython kernel install --name "local-venv" --user
+$ python -m ipykernel install --user --name ENV_NAME --display-name "ENV_DISPLAY_NAME"
 ```
 
 To list all kernels:
@@ -27,7 +27,7 @@ To remove a kernel:
 $ jupyter kernelspec uninstall unwanted-kernel
 ```
 
-### To setup jupyter notebook extensions
+### To set up Jupyter notebook extensions
 
 `pep8` package is required for auto-linting in the notebook.
 
@@ -39,7 +39,7 @@ $ pip install pep8                                # For pip, required for auto-l
 $ conda install -c anaconda pep8                  # For Anaconda, required for auto-linting
 ```
 
-### To setup Jupyter Notebook themes
+### To set up Jupyter Notebook themes
 
 We use [dunovank/jupyter-themes](https://github.com/dunovank/jupyter-themes)
 
@@ -49,7 +49,7 @@ $ conda install -c conda-forge jupyterthemes      # For Anaconda
 $ jt -t chesterish -T -f roboto -fs 12 -cellw 95% # Sets theme to chesterish, enables toolbar, sets font to robot, sets fontsize to 12, set cell width to 95% of screen
 ```
 
-### To log into Server and set up a jupyter notebook instance
+### To set up a Jupyter Notebook instance in a Server
 
 1.  `$ ssh username@server_ip_addr`
 2.  Install anaconda in the server
@@ -63,9 +63,9 @@ $ jt -t chesterish -T -f roboto -fs 12 -cellw 95% # Sets theme to chesterish, en
 10. On your local machine, go to `http://localhost:8000` and enter token from server.
 11. `!conda list` # From inside the jupyter notebook test modules
 
-## Conda environment
+### Conda environment package save and load
 
-Note: To export current conda env
+To export current conda env
 
 `$ conda-env  export -n your_env_name > your_env_name.yml`
 
