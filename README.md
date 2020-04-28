@@ -47,7 +47,7 @@ Base model structure
 
 Base model structure
 
-![](img/Discriminator.png)
+![](img/discriminator.png)
 
 ### Loss function
 
