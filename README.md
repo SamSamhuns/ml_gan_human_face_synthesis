@@ -35,15 +35,15 @@ We the following transformations on image data so all images are cropped to size
     torchvision.transforms.ToTensor()
     torchvision.transforms.Normalize((0.5, 0.5, 0.5), (0.5, 0.5, 0.5))
 
-## GAN Network
+## Base GAN Network
 
-### Generator
+### Base Generator
 
 Base model structure
 
 ![](img/generator.png)
 
-### Discriminator
+### Base Discriminator
 
 Base model structure
 
@@ -68,50 +68,86 @@ batch size            = 64
 epochs                = 100
 ```
 
-## Results
+## Improved Model
+
+In the improved model, based on other research work done on improving GANs, we change a few things in the Generator and Discriminator networks structures.
+
+For the **Discriminator**, we add `nn.Dropout()` layers to add regularization and prevent overfitting.
+
+For the **Generator**, we change the activation functions to `LeakyReLU()` instead of `ReLU()` to avoid sparse gradients.
+
+In the Training itself, we add **One side label smoothing** to further regularize the Discriminator. i.e. Change the real labels from all ones to random values in the range `0.7 - 1.2`
+
+## Results of Improved Model
+
+After Training for 16 epochs each of 1750 iterations where each iteration has a batch size of 64.
+
+![](img/improved_generated_imgs.gif)
+
+## Results of Base Model
+
+### Loss Curve after 18000 iterations
+
+On each iteration, the model is trained with a batch of 64 images:
+
+![](img/base_gan_loss_full_data.png)
+
+### Base Model Generated Images
+
+Each epoch ends at the completion of 1750 iterations.
 
 #### Epoch 0
 
-The generated images have some semblance of a human face.
-
-|              Real image set              |            Generated image set           |
-| :--------------------------------------: | :--------------------------------------: |
-| ![](generated_imgs/0_0_real_samples.png) | ![](generated_imgs/0_0_fake_samples.png) |
-
-#### Epoch 1
-
-The closeness to a human face is much more pronounced.
-
-|              Real image set              |            Generated image set           |
-| :--------------------------------------: | :--------------------------------------: |
-| ![](generated_imgs/1_0_real_samples.png) | ![](generated_imgs/1_0_fake_samples.png) |
+|                 Real image set                 |               Generated image set              |
+| :--------------------------------------------: | :--------------------------------------------: |
+| ![](generated_imgs/0000_0100_real_samples.png) | ![](generated_imgs/0000_0100_fake_samples.png) |
 
 #### Epoch 2
 
-The generated images have the prominent facial features of a human face.
+|                 Real image set                 |               Generated image set              |
+| :--------------------------------------------: | :--------------------------------------------: |
+| ![](generated_imgs/0002_0100_real_samples.png) | ![](generated_imgs/0002_0100_fake_samples.png) |
 
-|              Real image set              |            Generated image set           |
-| :--------------------------------------: | :--------------------------------------: |
-| ![](generated_imgs/2_0_real_samples.png) | ![](generated_imgs/2_0_fake_samples.png) |
+#### Epoch 4
 
-#### Epoch 3
+|                 Real image set                 |               Generated image set              |
+| :--------------------------------------------: | :--------------------------------------------: |
+| ![](generated_imgs/0004_0100_real_samples.png) | ![](generated_imgs/0004_0100_fake_samples.png) |
 
-The generated images have formed distinct although blurry faces.
+#### Epoch 6
 
-|              Real image set              |            Generated image set           |
-| :--------------------------------------: | :--------------------------------------: |
-| ![](generated_imgs/3_0_real_samples.png) | ![](generated_imgs/3_0_fake_samples.png) |
+|                 Real image set                 |               Generated image set              |
+| :--------------------------------------------: | :--------------------------------------------: |
+| ![](generated_imgs/0006_0100_real_samples.png) | ![](generated_imgs/0006_0100_fake_samples.png) |
+
+#### Epoch 8
+
+|                 Real image set                 |               Generated image set              |
+| :--------------------------------------------: | :--------------------------------------------: |
+| ![](generated_imgs/0008_0100_real_samples.png) | ![](generated_imgs/0008_0100_fake_samples.png) |
+
+#### Epoch 10
+
+|                 Real image set                 |               Generated image set              |
+| :--------------------------------------------: | :--------------------------------------------: |
+| ![](generated_imgs/0009_1750_real_samples.png) | ![](generated_imgs/0009_1750_fake_samples.png) |
 
 ### Test run on a tiny dataset
 
 We trained our GAN model on the mini_data which contains images enough for only a single batch of 64 images for 100 epochs:
 
-As expected, the Loss curves were not promising for training with such a small dataset:
+As expected, we can observe the general instability with training our GAN as the loss curves were not promising for training with such a small dataset:
 
-|      GAN loss mini_data run 1     |      GAN loss mini_data run 2     |
-| :-------------------------------: | :-------------------------------: |
-| ![](img/gan_loss_mini_data_1.png) | ![](img/gan_loss_mini_data_2.png) |
+|        GAN loss mini_data run 1        |        GAN loss mini_data run 2        |
+| :------------------------------------: | :------------------------------------: |
+| ![](img/base_gan_loss_mini_data_1.png) | ![](img/base_gan_loss_mini_data_2.png) |
 
 ## Acknowledgements
 
--   Liu, Ziwei, Ping Luo, Xiaogang Wang, and Xiaoou Tang. “Deep Learning Face Attributes in the Wild.” ArXiv:1411.7766 [Cs], September 24, 2015. <http://arxiv.org/abs/1411.7766>.
+-   Liu, Ziwei, Ping Luo, Xiaogang Wang, and Xiaoou Tang. “Deep Learning Face Attributes in the Wild.” ArXiv:1411.7766 [Cs], September 24, 2015. <http://arxiv.org/abs/1411.7766>. **[CelebA Dataset Source]**
+
+-   Sønderby, Casper Kaae, Jose Caballero, Lucas Theis, Wenzhe Shi, and Ferenc Huszár. “Amortised MAP Inference for Image Super-Resolution.” ArXiv:1610.04490 [Cs, Stat], February 21, 2017. <http://arxiv.org/abs/1610.04490>. **[Adding noise to images used for training the GAN]**
+
+-   Radford, Alec, Luke Metz, and Soumith Chintala. “Unsupervised Representation Learning with Deep Convolutional Generative Adversarial Networks.” ArXiv:1511.06434 [Cs], January 7, 2016. <http://arxiv.org/abs/1511.06434>. **[Use of DNNs in GAN, ADAM Optimizer for Generator and SGD for Discriminator]**
+
+-   Salimans, Tim, Ian Goodfellow, Wojciech Zaremba, Vicki Cheung, Alec Radford, and Xi Chen. “Improved Techniques for Training GANs.” ArXiv:1606.03498 [Cs], June 10, 2016. <http://arxiv.org/abs/1606.03498>. **[One sided label smoothing]**
