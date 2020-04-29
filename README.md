@@ -86,7 +86,9 @@ In the Training itself, we add **One side label smoothing** to further regulariz
 
 ## Results of Improved Model
 
-After Training for 16 epochs each of 1750 iterations where each iteration has a batch size of 64.
+Training for 16 epochs each of 1750 iterations where each iteration has a batch size of 64.
+
+Results overtime:
 
 ![](img/improved_generated_imgs.gif)
 
