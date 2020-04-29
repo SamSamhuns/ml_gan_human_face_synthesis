@@ -26,6 +26,12 @@ We use the [CelebA](http://mmlab.ie.cuhk.edu.hk/projects/CelebA.html) dataset to
 
 ![](img/dataset_images.png)
 
+### Download the CelebA Dataset
+
+**Warning: Data size exceeds 70 GB**
+
+`$ python download.py`
+
 ## Preprocessing Data
 
 We the following transformations on image data so all images are cropped to size `64x64x3` and normalized:
