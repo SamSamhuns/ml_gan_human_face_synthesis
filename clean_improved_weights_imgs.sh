@@ -1,3 +1,3 @@
-rm improved_generated_imgs/*
-rm improved_generator_trained_weights/*
-rm improved_discriminator_trained_weights/*
+rm weights/improved_generated_imgs/*
+rm weights/improved_generator_trained_weights/*
+rm weights/improved_discriminator_trained_weights/*
