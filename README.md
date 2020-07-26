@@ -24,7 +24,7 @@ $ python -m ipykernel install --user --name ENV_NAME --display-name "ENV_DISPLAY
 
 We use the [CelebA](http://mmlab.ie.cuhk.edu.hk/projects/CelebA.html) dataset to train our GAN. CelebA is a large-scale face attributes dataset with more than **200K** celebrity images.
 
-![](img/dataset_images.png)
+![](readme_img/img/dataset_images.png)
 
 ### Download the CelebA Dataset
 
@@ -47,19 +47,19 @@ We the following transformations on image data so all images are cropped to size
 
 Base model structure
 
-![](img/generator.png)
+![](readme_img/img/generator.png)
 
 ### Base Discriminator
 
 Base model structure
 
-![](img/discriminator.png)
+![](readme_img/img/discriminator.png)
 
 ### Loss function
 
 Binary Cross Entropy Loss for the minimax GAN loss
 
-![](img/minimax_loss.jpeg)
+![](readme_img/img/minimax_loss.jpeg)
 
 We use a `batch size` of `64`, latent vector z size of `100`
 
@@ -90,7 +90,7 @@ Training for 16 epochs each of 1750 iterations where each iteration has a batch 
 
 Results overtime:
 
-![](img/improved_generated_imgs.gif)
+![](readme_img/img/improved_generated_imgs.gif)
 
 ## Results of Base Model
 
@@ -98,7 +98,7 @@ Results overtime:
 
 On each iteration, the model is trained with a batch of 64 images:
 
-![](img/base_gan_loss_full_data.png)
+![](readme_img/img/base_gan_loss_full_data.png)
 
 ### Base Model Generated Images
 
@@ -106,39 +106,39 @@ Each epoch ends at the completion of 1750 iterations.
 
 #### Epoch 0
 
-|                 Real image set                 |               Generated image set              |
-| :--------------------------------------------: | :--------------------------------------------: |
-| ![](generated_imgs/0000_0100_real_samples.png) | ![](generated_imgs/0000_0100_fake_samples.png) |
+|                       Real image set                      |                    Generated image set                    |
+| :-------------------------------------------------------: | :-------------------------------------------------------: |
+| ![](readme_img/generated_imgs/0000_0100_real_samples.png) | ![](readme_img/generated_imgs/0000_0100_fake_samples.png) |
 
 #### Epoch 2
 
-|                 Real image set                 |               Generated image set              |
-| :--------------------------------------------: | :--------------------------------------------: |
-| ![](generated_imgs/0002_0100_real_samples.png) | ![](generated_imgs/0002_0100_fake_samples.png) |
+|                       Real image set                      |                    Generated image set                    |
+| :-------------------------------------------------------: | :-------------------------------------------------------: |
+| ![](readme_img/generated_imgs/0002_0100_real_samples.png) | ![](readme_img/generated_imgs/0002_0100_fake_samples.png) |
 
 #### Epoch 4
 
-|                 Real image set                 |               Generated image set              |
-| :--------------------------------------------: | :--------------------------------------------: |
-| ![](generated_imgs/0004_0100_real_samples.png) | ![](generated_imgs/0004_0100_fake_samples.png) |
+|                       Real image set                      |                    Generated image set                    |
+| :-------------------------------------------------------: | :-------------------------------------------------------: |
+| ![](readme_img/generated_imgs/0004_0100_real_samples.png) | ![](readme_img/generated_imgs/0004_0100_fake_samples.png) |
 
 #### Epoch 6
 
-|                 Real image set                 |               Generated image set              |
-| :--------------------------------------------: | :--------------------------------------------: |
-| ![](generated_imgs/0006_0100_real_samples.png) | ![](generated_imgs/0006_0100_fake_samples.png) |
+|                       Real image set                      |                    Generated image set                    |
+| :-------------------------------------------------------: | :-------------------------------------------------------: |
+| ![](readme_img/generated_imgs/0006_0100_real_samples.png) | ![](readme_img/generated_imgs/0006_0100_fake_samples.png) |
 
 #### Epoch 8
 
-|                 Real image set                 |               Generated image set              |
-| :--------------------------------------------: | :--------------------------------------------: |
-| ![](generated_imgs/0008_0100_real_samples.png) | ![](generated_imgs/0008_0100_fake_samples.png) |
+|                       Real image set                      |                    Generated image set                    |
+| :-------------------------------------------------------: | :-------------------------------------------------------: |
+| ![](readme_img/generated_imgs/0008_0100_real_samples.png) | ![](readme_img/generated_imgs/0008_0100_fake_samples.png) |
 
 #### Epoch 10
 
-|                 Real image set                 |               Generated image set              |
-| :--------------------------------------------: | :--------------------------------------------: |
-| ![](generated_imgs/0009_1750_real_samples.png) | ![](generated_imgs/0009_1750_fake_samples.png) |
+|                       Real image set                      |                    Generated image set                    |
+| :-------------------------------------------------------: | :-------------------------------------------------------: |
+| ![](readme_img/generated_imgs/0009_1750_real_samples.png) | ![](readme_img/generated_imgs/0009_1750_fake_samples.png) |
 
 ### Test run on a tiny dataset
 
@@ -146,9 +146,9 @@ We trained our GAN model on the mini_data which contains images enough for only 
 
 As expected, we can observe the general instability with training our GAN as the loss curves were not promising for training with such a small dataset:
 
-|        GAN loss mini_data run 1        |        GAN loss mini_data run 2        |
-| :------------------------------------: | :------------------------------------: |
-| ![](img/base_gan_loss_mini_data_1.png) | ![](img/base_gan_loss_mini_data_2.png) |
+|              GAN loss mini_data run 1             |              GAN loss mini_data run 2             |
+| :-----------------------------------------------: | :-----------------------------------------------: |
+| ![](readme_img/img/base_gan_loss_mini_data_1.png) | ![](readme_img/img/base_gan_loss_mini_data_2.png) |
 
 ## Acknowledgements
 
